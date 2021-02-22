@@ -5,12 +5,12 @@ const input = require('readline-sync');
 // TODO 1.1a: Define candidateName // 
 let candidateName = "";
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-let question = "Who is the first American woman in space? ";
+let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
 let candidateAnswer = "";
 let correct = 0; 
 let questions = [
-  "Who is the first American woman in space? ",
+  "Who was the first American woman in space? ",
   "\nTrue or false: 5000 meters = 5 kilometers. ",
   "\n(5 + 3)/ 2 *1 0 = ? ",
   "\nGiven the array [8, 'Orbit', 'Trajectory', '45'],\nwhat entry is at index 2? ",
@@ -18,7 +18,7 @@ let questions = [
 ];
 let correctAnswers = [
   "Sally Ride",
-  "True",
+  "true",
   "40",
   "Trajectory",
   "3"
@@ -39,9 +39,10 @@ function askForName() {
 }
 
 function askQuestion() {
+
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
 
-  for(let i=0; i<5; i++){
+  for(let i = 0; i < questions.length; i++){
     candidateAnswer = input.question(questions[i] + "\nYour answer: ");
     candidateAnswers[i] = candidateAnswer;
     console.log("Correct answer: " + correctAnswers[i]);
@@ -52,13 +53,16 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 
-for(let i=0; i<5; i++){
-  if (candidateAnswers[i] == correctAnswers[i]) {
+console.log(questions.length)
+for(let i = 0; i < questions.length; i++){
+  if (candidateAnswers[i].toLowerCase() == correctAnswers[i].toLowerCase()) {
     correct+=1;
   }
 }
 
 let grade = (correct / questions.length) * 100;
+
+
 return grade;
 }
 
